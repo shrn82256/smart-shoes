@@ -57,8 +57,10 @@ void loop()
       Serial.print('\t');
       Serial.println(calories);
 
-      int httpCode1 = ThingSpeak.writeField(myChannelNumber, 1, steps, myWriteAPIKey);
-      int httpCode2 = ThingSpeak.writeField(myChannelNumber, 3, calories, myWriteAPIKey);
+      ThingSpeak.setField(1, steps);
+      ThingSpeak.setField(3, (float)calories);
+
+      ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
 
       steps = 0;
     }
