@@ -6,6 +6,8 @@ const char *myWriteAPIKey = "MGFJICVEYPMMFAEP";
 
 const char *ssid = "AndroidAP";    // your wifi SSID name
 const char *password = "mojojojo"; // wifi pasword
+float val;
+int pin = A0;
 
 WiFiClient client;
 
@@ -51,15 +53,18 @@ void loop()
     }
     else if (ch == '\n')
     {
+      val = analogRead(pin);
       float calories = 0.063 * steps;
 
       Serial.print(steps);
+      Serial.print('\t');
+      Serial.print(val);
       Serial.print('\t');
       Serial.println(calories);
 
       ThingSpeak.setField(1, steps);
       ThingSpeak.setField(3, (float)calories);
-
+      ThingSpeak.setField(2, (float)val);
       ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
 
       steps = 0;
