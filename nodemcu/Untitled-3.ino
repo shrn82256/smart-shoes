@@ -1,8 +1,8 @@
 #include "ThingSpeak.h"
 #include <ESP8266WiFi.h>
 
-unsigned long myChannelNumber = 741375;
-const char *myWriteAPIKey = "MGFJICVEYPMMFAEP";
+unsigned long myChannelNumber = 0;
+const char *myWriteAPIKey = "lalala";
 
 const char *ssid = "AndroidAP";    // your wifi SSID name
 const char *password = "mojojojo"; // wifi pasword
